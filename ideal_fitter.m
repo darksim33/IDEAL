@@ -1,4 +1,4 @@
-function [FitResults,FitQuality,Params,FitMaps] = ideal_fitter(Data_raw, Mask_raw, Data_raw_masked, Params)
+function [Params,FitMaps,FitResults,FitQuality] = ideal_fitter(Data_raw, Mask_raw, Data_raw_masked, Params)
 
 
 %% Perform IDEAL fitting
@@ -92,7 +92,7 @@ for slice = Params.slice
                                         res_step,Params.Model);
         end
     end
-    fprintf("Fitting Completed!\nStarting Plotting...\n");
+    fprintf("Fitting Completed!\n");
     Params.time = toc(tStart);
 end
 
