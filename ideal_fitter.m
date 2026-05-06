@@ -1,4 +1,4 @@
-function [FitResults,FitQuality,Params] = ideal_fitter(Data_raw, Mask_raw, Data_raw_masked, Params)
+function [FitResults,FitQuality,Params,FitMaps] = ideal_fitter(Data_raw, Mask_raw, Data_raw_masked, Params)
 
 
 %% Perform IDEAL fitting
@@ -94,3 +94,8 @@ for slice = Params.slice
     end
     fprintf("Fitting Completed!\nStarting Plotting...\n");
     Params.time = toc(tStart);
+end
+
+% Return the final-resolution parameter maps as a named struct so Python
+% can extract per-pixel fitted values without parsing the raw cfit objects.
+FitMaps = fit;
